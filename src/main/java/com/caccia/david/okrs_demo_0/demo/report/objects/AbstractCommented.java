@@ -9,16 +9,8 @@ import java.util.Date;
 @Data
 public abstract class AbstractCommented<E> extends IdedElement implements Commented<String, E, Date,String>
 {
-
-    String id;
     private Date time;
     private Comments<String, Date, String> comments;
-
-    @Override
-    public String getElementId()
-    {
-        return id;
-    }
 
     @Override
     public Date getTime()
