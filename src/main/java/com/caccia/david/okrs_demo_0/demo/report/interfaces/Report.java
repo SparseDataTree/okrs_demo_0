@@ -4,8 +4,10 @@ package com.caccia.david.okrs_demo_0.demo.report.interfaces;
    Do we id and date this object? Probably.   I am think that reports do not directly support comments, rather
    the elements of a report are commented.  That way, comments are propagated.
  */
-public interface Report<I,T,V> extends Ided<I>
+public interface Report<I,R> extends Ided<I>
 {
+
+    R getReport();
 
     // TODO we need to work on report events to help develop this.
 

@@ -5,7 +5,9 @@ import com.caccia.david.okrs_demo_0.demo.report.interfaces.Timed;
 
 import java.util.Date;
 import java.util.HashMap;
-
+/*
+TODO: consider if we want comments at this level.
+ */
 public abstract class AbstractIdedMap<V> extends HashMap<String, V> implements IdedMap<String,V>, Timed<Date>
 {
     private String elementId;

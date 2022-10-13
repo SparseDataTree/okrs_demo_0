@@ -10,7 +10,7 @@ import java.util.Date;
 public class CommentsImpl extends AbstractCommented<String> implements Comments<String, Date,String>, ReportComponentType<ReportComponentTypes>
 {
 
-    private String element;
+    private String element; // At some point, we may want comments to be editable (meaning that it can be versioned).
 
     @Override
     public String getElement()
