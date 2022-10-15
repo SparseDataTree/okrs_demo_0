@@ -8,10 +8,10 @@ import java.util.HashMap;
 /*
 TODO: consider if we want comments at this level.
  */
-public abstract class AbstractIdedMap<V> extends HashMap<String, V> implements IdedMap<String,V>, Timed<Date>
+public abstract class AbstractIdedMap<T,U,V> extends HashMap<T, V> implements IdedMap<T,U,V>, Timed<Date>
 {
-    private String elementId;
-    private String userId;
+    private T elementId;
+    private U userId;
 
     private String teamName;
     private String teamSummary;
@@ -30,13 +30,13 @@ public abstract class AbstractIdedMap<V> extends HashMap<String, V> implements I
     }
 
     @Override
-    public String getElementId()
+    public T getElementId()
     {
         return elementId;
     }
 
     @Override
-    public String getUserId()
+    public U getUserId()
     {
         return userId;
     }

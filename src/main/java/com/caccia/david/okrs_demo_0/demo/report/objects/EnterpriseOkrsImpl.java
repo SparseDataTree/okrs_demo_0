@@ -3,7 +3,7 @@ package com.caccia.david.okrs_demo_0.demo.report.objects;
 
 import java.util.List;
 
-public class EnterpriseOkrsImpl extends AbstractIdedMap<OkrMapImpl>
+public class EnterpriseOkrsImpl extends AbstractIdedMap<HierarchicalIdImpl,String,OkrMapImpl>
 {
     String oKRsID;
 
