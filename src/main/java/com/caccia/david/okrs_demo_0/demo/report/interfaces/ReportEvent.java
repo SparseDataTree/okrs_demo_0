@@ -5,7 +5,7 @@ import java.util.Map;
 /*
    Reports are not versioned and are not commented.  But They are ided.  Hence, there are no deletions on reports
  */
-public interface ReportEvent<I,R> extends Ided<I>
+public interface ReportEvent<U, I,R> extends Ided<U,I>
 {
     R report();
 

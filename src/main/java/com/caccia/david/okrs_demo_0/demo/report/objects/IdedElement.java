@@ -4,7 +4,7 @@ import com.caccia.david.okrs_demo_0.demo.report.interfaces.Ided;
 import lombok.Data;
 
 @Data
-public class IdedElement implements Ided<String>
+public class IdedElement implements Ided<String,String>
 {
 
     private String elementId;
