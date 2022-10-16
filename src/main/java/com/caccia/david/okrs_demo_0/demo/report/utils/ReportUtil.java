@@ -1,6 +1,10 @@
 package com.caccia.david.okrs_demo_0.demo.report.utils;
 
+import com.caccia.david.okrs_demo_0.demo.report.interfaces.Formater;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Report;
+import com.caccia.david.okrs_demo_0.demo.report.objects.ReportImpl;
+import com.caccia.david.okrs_demo_0.demo.report.objects.StringFormater;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -15,19 +19,12 @@ public class ReportUtil
 
      */
 
-    String makeReport( List<Report> reports)
+    @Autowired
+    static StringFormater formater;
+
+    static String makeTextReport( List<ReportImpl> reports)
     {
-        reports = sort(reports);
-        return format(reports);
+        return formater.format(reports);
     }
 
-    private String format(List<Report> reports)
-    {
-        return null;
-    }
-
-    private List<Report> sort(List<Report> reports)
-    {
-        return reports;
-    }
 }
