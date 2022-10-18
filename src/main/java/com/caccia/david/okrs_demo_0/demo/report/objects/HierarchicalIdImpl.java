@@ -39,6 +39,12 @@ public class HierarchicalIdImpl implements HierarchicalId
     }
 
     @Override
+    public boolean isLeaf(String idIn)
+    {
+        return idList.get(idList.size() - 1).equals(idIn);
+    }
+
+    @Override
     public boolean hasParent(String id)
     {
         return idList.indexOf(id) > 0;
@@ -73,5 +79,16 @@ public class HierarchicalIdImpl implements HierarchicalId
             if(id.equals(idElement)) break;
         }
         return new HierarchicalIdImpl(path);
+    }
+
+    @Override
+    public String toString()
+    {
+        StringBuffer b = new StringBuffer();
+        for(String id: idList)
+        {
+            b.append(id);
+        }
+        return b.toString();
     }
 }
