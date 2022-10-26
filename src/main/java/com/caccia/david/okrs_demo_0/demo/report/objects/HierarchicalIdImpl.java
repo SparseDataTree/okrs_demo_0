@@ -4,6 +4,7 @@ import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
    We assume a directed tree graph of nodes.  We assume uniqueness of all node identifiers within a tree.
@@ -70,6 +71,7 @@ public class HierarchicalIdImpl implements HierarchicalId
         return idList.get(ix);
     }
 
+    @Override
     public HierarchicalId getHierarchicalId(String id) // use after checking for presence
     {
         List<String> path = new LinkedList<>();
@@ -84,11 +86,6 @@ public class HierarchicalIdImpl implements HierarchicalId
     @Override
     public String toString()
     {
-        StringBuffer b = new StringBuffer();
-        for(String id: idList)
-        {
-            b.append(id);
-        }
-        return b.toString();
+        return idList.stream().collect(Collectors.joining(" -> "));
     }
 }

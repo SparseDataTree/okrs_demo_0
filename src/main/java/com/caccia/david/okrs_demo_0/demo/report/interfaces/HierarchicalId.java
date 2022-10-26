@@ -21,4 +21,7 @@ public interface HierarchicalId
     boolean hasChild(String id);
 
     String getChild(String id);
+
+    HierarchicalId getHierarchicalId(String id) // use after checking for presence
+    ;
 }

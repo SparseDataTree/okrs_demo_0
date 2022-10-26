@@ -19,4 +19,9 @@ public class TestUtil
 
         return testPaths;
     }
+
+    public static List<ReportImpl> makeReportList()
+    {
+        return null;
+    }
 }

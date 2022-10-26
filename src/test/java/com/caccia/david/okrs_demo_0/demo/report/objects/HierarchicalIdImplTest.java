@@ -96,6 +96,6 @@ class HierarchicalIdImplTest
     void testToString()
     {
         String stringId = testList.toString();
-        assert(stringId.equals("rootdirmanagerteamdeveloper"));
+        assert(stringId.equals("root -> dir -> manager -> team -> developer"));
     }
 }
