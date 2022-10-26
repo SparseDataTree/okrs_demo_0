@@ -10,6 +10,8 @@ public interface HierarchicalId
 
     String getRootId();
 
+    //tod do we want a method to get the leaf?
+
     boolean isLeaf(String idIn);
 
     boolean hasParent(String id);
