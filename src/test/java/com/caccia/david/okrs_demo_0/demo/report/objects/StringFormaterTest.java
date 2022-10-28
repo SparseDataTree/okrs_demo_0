@@ -10,14 +10,14 @@ class StringFormaterTest
 {
 
     List<ReportImpl> reportList = TestUtil.makeReportList();
+    StringFormater formater = new StringFormater();
 
-    @Test
-    void format()
-    {
-    }
 
     @Test
     void testFormat()
     {
+        String report = formater.format(TestUtil.reportPaths[3], reportList);
+
+        System.out.println(report);
     }
 }

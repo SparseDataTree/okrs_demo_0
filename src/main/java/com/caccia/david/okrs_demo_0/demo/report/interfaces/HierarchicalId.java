@@ -24,4 +24,6 @@ public interface HierarchicalId
 
     HierarchicalId getHierarchicalId(String id) // use after checking for presence
     ;
+
+    String getLeaf();
 }

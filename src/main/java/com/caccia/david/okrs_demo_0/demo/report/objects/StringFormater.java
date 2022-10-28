@@ -14,9 +14,12 @@ import java.util.stream.Collectors;
 @Component
 public class StringFormater implements Formater<String, String, List<ReportImpl>>
 {
-    private static final String BLANK_LINE = System.lineSeparator();
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String ID = "Report ID: ";
-    private static final String NODE_SEPARATOR = "====================================================================" + BLANK_LINE;
+    private static final String NODE_SEPARATOR = "====================================================================" + LINE_SEPARATOR;
+    private static final String TEAM_REPORT = "Team Report: ";
+    private static final String CHAINED_REPORTS = "Chained Reports: ";
+    private static final String SUBSCRIBED_REPORTS = "Subscribed Reports: ";
 
 
     /*
@@ -30,14 +33,24 @@ public class StringFormater implements Formater<String, String, List<ReportImpl>
     {
         HierarchicalId nodeId = prereport(id,input);
         List<ReportImpl> reports = filter(nodeId, input);
-        return format(input);
+        return format(reports);
     }
 
     private HierarchicalId prereport(String id, List<ReportImpl> input)
     {
-        Optional<ReportImpl> teamReport = input.stream().findAny().filter(findLeaf(id));
+        Optional<ReportImpl> teamReport = input.stream().filter(findLeaf(id)).findAny();
+        b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
+        b.append(TEAM_REPORT);
+        b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
 
         makeNodeReport(teamReport.get());
+        b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
+        b.append(CHAINED_REPORTS);
+        b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
 
         return teamReport.get().getElementId();
     }
@@ -45,7 +58,8 @@ public class StringFormater implements Formater<String, String, List<ReportImpl>
     private void makeNodeReport(ReportImpl report)
     {
         b.append(ID + report.getElementId());
-        b.append(BLANK_LINE);
+        b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
         b.append(report.getReport());
         b.append(NODE_SEPARATOR);
         b.append(NODE_SEPARATOR);
@@ -65,16 +79,25 @@ public class StringFormater implements Formater<String, String, List<ReportImpl>
     {
         List<ReportImpl> filteredList = input.stream().filter(remove(id)).collect(Collectors.toList());
         List<ReportImpl> newList = new LinkedList<>();
-        for(String leaf: id.getIdList())
+        boolean hasParent = id.getIdList().size() > 1;
+        String leaf = id.getLeaf();
+        while(hasParent)
         {
-            if(id.hasParent(leaf))
-            {
-                String parent = id.getParent(leaf);
-                Optional<ReportImpl> report = input.stream().filter(findLeaf(parent)).findAny();
-                newList.add(report.get());
-                input.remove(report.get());
-            }
-            newList.addAll(input);
+            String parent = id.getParent(leaf);
+            Optional<ReportImpl> report = filteredList.stream().filter(findLeaf(parent)).findAny();
+            newList.add(report.get());
+            filteredList.remove(report.get());
+            hasParent = id.hasParent(parent);
+            leaf = parent;
+        }
+        if(filteredList.size() > 0)
+        {
+            b.append(LINE_SEPARATOR);
+            b.append(LINE_SEPARATOR);
+            b.append(SUBSCRIBED_REPORTS);
+            b.append(LINE_SEPARATOR);
+            b.append(LINE_SEPARATOR);
+            newList.addAll(filteredList);
         }
 
         return newList;

@@ -2,7 +2,9 @@ package com.caccia.david.okrs_demo_0.demo.report.objects;
 
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Report;
+import lombok.Data;
 
+@Data
 public class ReportImpl implements Report<HierarchicalId,String, String>
 {
     private String report;

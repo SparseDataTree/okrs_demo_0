@@ -84,6 +84,12 @@ public class HierarchicalIdImpl implements HierarchicalId
     }
 
     @Override
+    public String getLeaf()
+    {
+        return idList.get(idList.size() - 1);
+    }
+
+    @Override
     public String toString()
     {
         return idList.stream().collect(Collectors.joining(" -> "));
