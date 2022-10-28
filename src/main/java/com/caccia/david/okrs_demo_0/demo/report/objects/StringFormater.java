@@ -4,13 +4,14 @@ import com.caccia.david.okrs_demo_0.demo.report.interfaces.Formater;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-// todo let's make unit tests for this.
 @Component
 public class StringFormater implements Formater<String, String, List<ReportImpl>>
 {
@@ -20,13 +21,16 @@ public class StringFormater implements Formater<String, String, List<ReportImpl>
     private static final String TEAM_REPORT = "Team Report: ";
     private static final String CHAINED_REPORTS = "Chained Reports: ";
     private static final String SUBSCRIBED_REPORTS = "Subscribed Reports: ";
+    private static final String SPACES = "     ";
+    private static final String DATE = "Last updated: ";
 
 
     /*
         This will be a vertical list of reports, starting with the designated team, and working up the tree.  Once that has been done,
-
+        reports from subscribed teams follow.
          */
     StringBuffer b = new StringBuffer();
+    private int coreReportCount = 0;
 
     @Override
     public String format(String id, List<ReportImpl> input)
@@ -57,7 +61,9 @@ public class StringFormater implements Formater<String, String, List<ReportImpl>
 
     private void makeNodeReport(ReportImpl report)
     {
-        b.append(ID + report.getElementId());
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd:hh-mm");
+        String time = df.format(report.getDate());
+        b.append(ID + report.getElementId() + SPACES + DATE + time);
         b.append(LINE_SEPARATOR);
         b.append(LINE_SEPARATOR);
         b.append(report.getReport());
@@ -68,8 +74,18 @@ public class StringFormater implements Formater<String, String, List<ReportImpl>
     @Override
     public String format(List<ReportImpl> input)
     {
-        for(ReportImpl report: input)
+
+        for(int i = 0; i < input.size(); i++)
         {
+            ReportImpl report = input.get(i);
+            if(i == coreReportCount)
+            {
+                b.append(LINE_SEPARATOR);
+                b.append(LINE_SEPARATOR);
+                b.append(SUBSCRIBED_REPORTS);
+                b.append(LINE_SEPARATOR);
+                b.append(LINE_SEPARATOR);
+            }
             makeNodeReport(report);
         }
         return b.toString();
@@ -90,15 +106,9 @@ public class StringFormater implements Formater<String, String, List<ReportImpl>
             hasParent = id.hasParent(parent);
             leaf = parent;
         }
-        if(filteredList.size() > 0)
-        {
-            b.append(LINE_SEPARATOR);
-            b.append(LINE_SEPARATOR);
-            b.append(SUBSCRIBED_REPORTS);
-            b.append(LINE_SEPARATOR);
-            b.append(LINE_SEPARATOR);
-            newList.addAll(filteredList);
-        }
+        coreReportCount = newList.size();
+
+        newList.addAll(filteredList);
 
         return newList;
     }

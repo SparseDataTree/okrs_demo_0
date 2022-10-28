@@ -2,14 +2,18 @@ package com.caccia.david.okrs_demo_0.demo.report.objects;
 
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Report;
+import com.caccia.david.okrs_demo_0.demo.report.interfaces.Timed;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
-public class ReportImpl implements Report<HierarchicalId,String, String>
+public class ReportImpl implements Report<HierarchicalId,String, String, Date>
 {
     private String report;
     private HierarchicalId nodeId;
     private String userId;
+    private Date date;
 
     @Override
     public String getReport()
@@ -27,5 +31,11 @@ public class ReportImpl implements Report<HierarchicalId,String, String>
     public String getUserId()
     {
         return userId;
+    }
+
+    @Override
+    public Date getTime()
+    {
+        return date;
     }
 }

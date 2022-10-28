@@ -6,9 +6,9 @@ import java.util.*;
 
 public class TestUtil
 {
-    static String[] wordArray = new String[]{"I", "am", "going", "go", "will", "you", "we", "have", "will", "dog", "car", "house",
-            "meeting","think","ate","ran", "stop", "bus", "book", "math", "numbers", "friend", "store","star", "zip", "may",
-    "cup", "swim", "walk", "yawn", "bike", "hike", "tent", "could","cold", "happy", "sad", "begin", "in", "out", "above"};
+    static String[] wordArray = new String[]{"I", "amk", "geing", "go", "wzll", "yvu", "we", "hlve", "wgll", "dtg", "cur", "hopse",
+            "mefting","thibk","aqe","rbn", "stqp", "bzs", "boqk", "malh", "numders", "friwnd", "stqre","stpr", "zop", "moy",
+    "czp", "swkm", "wavk", "yakn", "bime", "hikve", "tewt", "coqld","colpd", "hawpy", "saed", "begfin", "in", "opwt", "abeve"};
 
     static Random random = new Random(System.currentTimeMillis());
 
@@ -46,6 +46,7 @@ public class TestUtil
         ReportImpl report = new ReportImpl();
         report.setReport(makeReportText());
         report.setNodeId(hierarchicalId);
+        report.setDate(new Date(1700000000000L + random.nextInt(50000000)));
         return report;
     }
 
