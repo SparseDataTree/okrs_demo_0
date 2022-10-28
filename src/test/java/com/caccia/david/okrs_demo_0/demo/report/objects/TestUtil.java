@@ -2,6 +2,8 @@ package com.caccia.david.okrs_demo_0.demo.report.objects;
 
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.*;
 
 public class TestUtil
@@ -47,6 +49,13 @@ public class TestUtil
         report.setReport(makeReportText());
         report.setNodeId(hierarchicalId);
         report.setDate(new Date(1700000000000L + random.nextInt(50000000)));
+        try
+        {
+            report.setLink(new URI("https://mockedlinkfortesting.com/home/enterprise/team"));
+        } catch (URISyntaxException e)
+        {
+            throw new RuntimeException(e);
+        }
         return report;
     }
 

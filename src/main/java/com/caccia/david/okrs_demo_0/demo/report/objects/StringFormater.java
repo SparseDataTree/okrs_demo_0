@@ -23,6 +23,7 @@ public class StringFormater implements Formater<String, String, List<ReportImpl>
     private static final String SUBSCRIBED_REPORTS = "Subscribed Reports: ";
     private static final String SPACES = "     ";
     private static final String DATE = "Last updated: ";
+    private static final String LINK = "Link: ";
 
 
     /*
@@ -67,6 +68,11 @@ public class StringFormater implements Formater<String, String, List<ReportImpl>
         b.append(LINE_SEPARATOR);
         b.append(LINE_SEPARATOR);
         b.append(report.getReport());
+        b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
+        b.append(LINK + report.getLink().toString());
+        b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
         b.append(NODE_SEPARATOR);
         b.append(NODE_SEPARATOR);
     }
