@@ -5,6 +5,8 @@ import com.caccia.david.okrs_demo_0.demo.report.objects.*;
 import java.util.Date;
 import java.util.List;
 
+import static com.caccia.david.okrs_demo_0.demo.report.utils.ReportHeaders.*;
+
 public class ReportUtil
 {
     /*
@@ -16,7 +18,7 @@ public class ReportUtil
 
      */
 
-    static ReportImpl makeReport(OkrMapImpl teamOKRs)
+    public static ReportImpl makeTeamReport(OkrMapImpl teamOKRs)
     {
         ReportImpl report = new ReportImpl();
         report.setLink(teamOKRs.getLink());
@@ -29,13 +31,12 @@ public class ReportUtil
     private static String makeReportText(OkrMapImpl teamOKRs)
     {
         StringBuffer b = new StringBuffer();
-        // todo header?
+        b.append(Objectives);
         for(List<ObjectiveAndKeyResults> okrVersions: teamOKRs.values())
         {
-            // todo header?
+            b.append(Objective);
             ObjectiveAndKeyResults okr = okrVersions.get(okrVersions.size() - 1);
             b.append(makeOkrText(okr));
-            // todo separators?
         }
         return b.toString();
     }
@@ -44,8 +45,10 @@ public class ReportUtil
     {
         StringBuffer b = new StringBuffer();
         b.append(okr.getObjective().getElement().getElement());
+        b.append(KeyResults);
         for(KeyResult keyResult: okr.getKeyResults().values())
         {
+            b.append(KeyResult);
             b.append(makeKeyResultText(keyResult));
 
         }
@@ -55,15 +58,13 @@ public class ReportUtil
     private static String makeKeyResultText(KeyResult keyResult)
     {
         StringBuffer b = new StringBuffer();
-        // todo make header
         b.append(keyResult.getKeyResult().getElement());
-        // todo make separator
 
         return b.toString();
     }
 
 
-    static String makeTextReport( String teamId, List<ReportImpl> reports)
+    public static String makeTeamContextReport(String teamId, List<ReportImpl> reports)
     {
         return new StringFormater().format(teamId, reports);
     }

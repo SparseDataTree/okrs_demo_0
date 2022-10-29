@@ -7,27 +7,28 @@ Our goal is to demonstrate a system for sharing OKRs across an enterprise.
 
 
 
-There are three parts to this demonstration:
+### There are three parts to this demonstration:
 1. reports - automatically generated and delivered when new OKRs are added and when OKRs are updated
 2. backend for handling and delivering events (creation and updating of OKRs)
 3. interactive system for navigating OKR team nodes; and for supporting comment streams.
 
-There are three parts to the reporting system:
-1. team-specific reports that are generated with each new comment on team OKRs.  (These are triggered by comments or OKR changes for a team.)
-2. enterprise-comment-radar report of which teams OKRs have new comments. (These are chron jobs that report blocks of comments added during a time interval - maybe daily)
-3. team-contextual reports that give the OKR context, not including comments. (I'm thinking that these could be chron jobs too.)
+### There are four parts to the reporting system:
+1. **team-specific** reports that are generated with each new comment on team OKRs.  (These are triggered by comments or OKR changes for a team.)
+2. **enterprise-comment-radar** report of which teams OKRs have new comments. (These are chron jobs that report blocks of comments added during a time interval - maybe daily)
+3. **team-contextual** reports that give the OKR context (full upstream OKRs plus team-specific subscriptions), not including comments. (I'm thinking that these could be chron jobs too.)
+4. **manager-contextual** reports that give the OKR updates for all teams directly reporting to a manager.
 
 The first two types of reports are accessible to anyone.  (For the third report, the main value of it is for members of the team in context; but people interested in getting reports of updates to a team's OKRs can subscribe to that team.)
 
-The proposed workflow is:
+#### The proposed workflow is:
 1. users can navigate team nodes via a UI; with edges indicating accountability (e.g. management hierarchy). 
 2. People can leave comments, and can respond to existing comments, at the level of stated objectives and key results.
 3. Comments can lead to threads of discussion.
 4. New Versions of OKRs can be generated.  The unit of versioning is: one objective and an associated set of key results.
 
-What about insertion or deletion of teams?  That is not part of the initial demo.
+#### What about insertion or deletion of teams?  That is not part of the initial demo.
 
-Events:
+#### Events:
 1. New comment:  this contributes to two kinds of events: team-specific reports (at the level of a specific objective and its key results.), and enterprise radar (which is a chron job)
 2. Changes to objectives or key results for a team triggers an event which may be integrated into a Kafka topic consumer so that it is propagated down the 
 accountability edges; and additionally to any subscribers.  
