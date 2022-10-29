@@ -2,6 +2,7 @@ package com.caccia.david.okrs_demo_0.demo.report.utils;
 
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Formater;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Report;
+import com.caccia.david.okrs_demo_0.demo.report.objects.OkrMapImpl;
 import com.caccia.david.okrs_demo_0.demo.report.objects.ReportImpl;
 import com.caccia.david.okrs_demo_0.demo.report.objects.StringFormater;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,15 @@ public class ReportUtil
 
      */
 
-    @Autowired
-    static StringFormater formater;
-
-    static String makeTextReport( List<ReportImpl> reports)
+    static ReportImpl makeReport(OkrMapImpl teamOKRs)
     {
-        return formater.format(reports);
+        return null; //todo
+    }
+
+
+    static String makeTextReport( String teamId, List<ReportImpl> reports)
+    {
+        return new StringFormater().format(teamId, reports);
     }
 
 }

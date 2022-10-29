@@ -19,6 +19,9 @@ accountability edges; additionally, people can subscribe to receive events from 
 Reports provide an organized set of team-level OKRs (along accountability edges and via intentional subscription), along with time of last update, and links back to the interactive enterprise 
 OKR system. 
 
+It would be valuable to have a second notification mechanism of new comments.  I am thinking, for now, that 
+this could be done in a couple ways:  1. report that comments have been made on a team's OKRs.  Or perhaps we want 
+to actually create a report that includes the comments; though perhaps just for that team.
 
 
 We are starting very simply, showing what a report might look like, and how it might be automatically

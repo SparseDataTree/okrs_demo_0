@@ -5,12 +5,11 @@ import com.caccia.david.okrs_demo_0.demo.report.interfaces.ReportComponentType;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
-public class Objective extends AbstractCommented<List<Commented<String,Date,String,String>> > implements ReportComponentType<ReportComponentTypes>
+public class Objective extends AbstractCommented<Commented<String,Date,String,String> > implements ReportComponentType<ReportComponentTypes>
 {
-    List<Commented<String,Date,String,String>> objectiveVersions;
+    Commented<String,Date,String,String> objective;
 
     @Override
     public ReportComponentTypes getType()
@@ -19,8 +18,8 @@ public class Objective extends AbstractCommented<List<Commented<String,Date,Stri
     }
 
     @Override
-    public List<Commented<String, Date, String, String>> getElement()
+    public Commented<String, Date, String, String> getElement()
     {
-        return objectiveVersions;
+        return objective;
     }
 }
