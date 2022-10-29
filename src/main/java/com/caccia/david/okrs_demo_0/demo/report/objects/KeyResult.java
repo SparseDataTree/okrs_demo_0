@@ -8,9 +8,9 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class KeyResult extends AbstractCommented<Commented<String, Date,String,String>> implements ReportComponentType<ReportComponentTypes>
+public class KeyResult extends AbstractCommented<Commented<String, String,Date,String>> implements ReportComponentType<ReportComponentTypes>
 {
-    Commented<String, Date,String,String> keyResult;
+    Commented<String, String,Date,String> keyResult;
 
     @Override
     public ReportComponentTypes getType()
@@ -19,7 +19,7 @@ public class KeyResult extends AbstractCommented<Commented<String, Date,String,S
     }
 
     @Override
-    public Commented<String, Date, String, String> getElement()
+    public Commented<String,String, Date,String> getElement()
     {
         return keyResult;
     }

@@ -7,9 +7,9 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Objective extends AbstractCommented<Commented<String,Date,String,String> > implements ReportComponentType<ReportComponentTypes>
+public class Objective extends AbstractCommented<Commented<String,String,Date, String> > implements ReportComponentType<ReportComponentTypes>
 {
-    Commented<String,Date,String,String> objective;
+    Commented<String,String,Date,String> objective;
 
     @Override
     public ReportComponentTypes getType()
@@ -18,7 +18,7 @@ public class Objective extends AbstractCommented<Commented<String,Date,String,St
     }
 
     @Override
-    public Commented<String, Date, String, String> getElement()
+    public Commented<String, String, Date, String> getElement()
     {
         return objective;
     }

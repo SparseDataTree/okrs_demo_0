@@ -1,12 +1,8 @@
 package com.caccia.david.okrs_demo_0.demo.report.utils;
 
-import com.caccia.david.okrs_demo_0.demo.report.interfaces.Formater;
-import com.caccia.david.okrs_demo_0.demo.report.interfaces.Report;
-import com.caccia.david.okrs_demo_0.demo.report.objects.OkrMapImpl;
-import com.caccia.david.okrs_demo_0.demo.report.objects.ReportImpl;
-import com.caccia.david.okrs_demo_0.demo.report.objects.StringFormater;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.caccia.david.okrs_demo_0.demo.report.objects.*;
 
+import java.util.Date;
 import java.util.List;
 
 public class ReportUtil
@@ -22,7 +18,48 @@ public class ReportUtil
 
     static ReportImpl makeReport(OkrMapImpl teamOKRs)
     {
-        return null; //todo
+        ReportImpl report = new ReportImpl();
+        report.setLink(teamOKRs.getLink());
+        report.setDate(new Date(System.currentTimeMillis()));
+        report.setElementId(teamOKRs.getElementId());
+        report.setReport(makeReportText(teamOKRs));
+        return report;
+    }
+
+    private static String makeReportText(OkrMapImpl teamOKRs)
+    {
+        StringBuffer b = new StringBuffer();
+        // todo header?
+        for(List<ObjectiveAndKeyResults> okrVersions: teamOKRs.values())
+        {
+            // todo header?
+            ObjectiveAndKeyResults okr = okrVersions.get(okrVersions.size() - 1);
+            b.append(makeOkrText(okr));
+            // todo separators?
+        }
+        return b.toString();
+    }
+
+    private static String makeOkrText(ObjectiveAndKeyResults okr)
+    {
+        StringBuffer b = new StringBuffer();
+        b.append(okr.getObjective().getElement().getElement());
+        for(KeyResult keyResult: okr.getKeyResults().values())
+        {
+            b.append(makeKeyResultText(keyResult));
+
+        }
+        return b.toString();
+    }
+
+    private static String makeKeyResultText(KeyResult keyResult)
+    {
+        StringBuffer b = new StringBuffer();
+        // todo make header
+        b.append(keyResult.getKeyResult().getElement());
+        // todo make separator
+
+        return b.toString();
     }
 
 

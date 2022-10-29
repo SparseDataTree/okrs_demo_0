@@ -47,7 +47,7 @@ public class TestUtil
     {
         ReportImpl report = new ReportImpl();
         report.setReport(makeReportText());
-        report.setNodeId(hierarchicalId);
+        report.setElementId(hierarchicalId);
         report.setDate(new Date(1700000000000L + random.nextInt(50000000)));
         try
         {

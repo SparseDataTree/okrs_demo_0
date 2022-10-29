@@ -11,7 +11,7 @@ import java.util.Date;
 public class ReportImpl implements Report<HierarchicalId,String, String, Date>
 {
     private String report;
-    private HierarchicalId nodeId;
+    private HierarchicalId elementId;
     private String userId;
     private Date date;
     private URI link;
@@ -25,7 +25,7 @@ public class ReportImpl implements Report<HierarchicalId,String, String, Date>
     @Override
     public HierarchicalId getElementId()
     {
-        return nodeId;
+        return elementId;
     }
 
     @Override
