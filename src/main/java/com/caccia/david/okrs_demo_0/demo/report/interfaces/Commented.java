@@ -1,7 +1,9 @@
 package com.caccia.david.okrs_demo_0.demo.report.interfaces;
 
+import java.util.Set;
+
 public interface Commented<I, E,T,C> extends Ided<I,I>, Timed<T>
 {
     E getElement();
-    Comments<I,T,C> getComments();
+    Set<Thread<I,T,C>> getThreads();
 }

@@ -57,6 +57,11 @@ Eventually (in a later demo), we will also want:
 The interactive OKR system is also presently still in a lot of flux.  I am starting to build out the 
 objects needed to support it, but have not yet made any decisions about UI or DB technology for it.
 
+
+### Comments
+I am considering making comments parts of specific versions of objectives or key results.
+This is not the only way this could be done.  Lots of learning to do.
+
 ## Backend
 I'm still mulling over what would be a good first step.
 Maybe just concatentate the latest messages.

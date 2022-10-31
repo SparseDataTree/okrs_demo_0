@@ -1,5 +1,7 @@
 package com.caccia.david.okrs_demo_0.demo.report.objects;
 
+import com.caccia.david.okrs_demo_0.demo.report.interfaces.Comment;
+import com.caccia.david.okrs_demo_0.demo.report.interfaces.Thread;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
 
 import java.net.URI;
@@ -75,5 +77,40 @@ public class TestUtil
         }
 
         return b.toString();
+    }
+
+    public static OkrMapImpl makeTestOkrMap()
+    {
+        return null; // todo
+    }
+
+    public static KeyResult makeTestKeyResult()
+    {
+        KeyResult testKeyResult = new KeyResult();
+        testKeyResult.setTime(new Date(System.currentTimeMillis()));
+        testKeyResult.setElementId("testKeyResultId");
+        testKeyResult.setUserId("testUserId");
+        testKeyResult.setThreads(makeTestThreads());
+        testKeyResult.setElement("test key result");
+        return testKeyResult;
+    }
+
+    private static Set<Thread<String, Date, String>> makeTestThreads()
+    {
+        Set<Thread<String, Date, String>> threads = new HashSet<>();
+        Thread<String, Date, String> thread =  new ThreadImpl();
+        thread.getThread().add(makeTestComment());
+        threads.add(thread);
+        return threads;
+    }
+
+    private static Comment<String, Date, String> makeTestComment()
+    {
+        CommentImpl comment = new CommentImpl();
+        comment.setTime(new Date(System.currentTimeMillis()));
+        comment.setComment("test comment");
+        comment.setUserId("testUserId");
+        comment.setElementId("testCommentElementId");
+        return comment;
     }
 }

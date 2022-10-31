@@ -1,10 +1,11 @@
 package com.caccia.david.okrs_demo_0.demo.report.objects;
 
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Commented;
-import com.caccia.david.okrs_demo_0.demo.report.interfaces.Comments;
+import com.caccia.david.okrs_demo_0.demo.report.interfaces.Thread;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.Set;
 
 @Data
 public abstract class AbstractCommented<E> extends IdedElement implements Commented<String, E, Date,String>
@@ -13,7 +14,7 @@ public abstract class AbstractCommented<E> extends IdedElement implements Commen
     TODO consider if we want a boolean to indicate that new comments have been added since the last report.
      */
     private Date time;
-    private Comments<String, Date, String> comments;
+    private Set<Thread<String, Date, String>> threads;
 
     @Override
     public Date getTime()
@@ -21,8 +22,8 @@ public abstract class AbstractCommented<E> extends IdedElement implements Commen
         return time;
     }
     @Override
-    public Comments<String, Date, String> getComments()
+    public Set<Thread<String, Date, String>> getThreads()
     {
-        return comments;
+        return threads;
     }
 }

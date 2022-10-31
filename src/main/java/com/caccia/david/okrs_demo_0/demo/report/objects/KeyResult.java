@@ -1,16 +1,13 @@
 package com.caccia.david.okrs_demo_0.demo.report.objects;
 
-import com.caccia.david.okrs_demo_0.demo.report.interfaces.Commented;
-
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.ReportComponentType;
 import lombok.Data;
 
-import java.util.Date;
 
 @Data
-public class KeyResult extends AbstractCommented<Commented<String, String,Date,String>> implements ReportComponentType<ReportComponentTypes>
+public class KeyResult extends AbstractCommented<String> implements ReportComponentType<ReportComponentTypes>
 {
-    Commented<String, String,Date,String> keyResult;
+    String element;
 
     @Override
     public ReportComponentTypes getType()
@@ -19,8 +16,8 @@ public class KeyResult extends AbstractCommented<Commented<String, String,Date,S
     }
 
     @Override
-    public Commented<String,String, Date,String> getElement()
+    public String getElement()
     {
-        return keyResult;
+        return element;
     }
 }
