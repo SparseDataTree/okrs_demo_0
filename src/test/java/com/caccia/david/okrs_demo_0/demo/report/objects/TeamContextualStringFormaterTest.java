@@ -4,13 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class StringFormaterTest
+class TeamContextualStringFormaterTest
 {
 
     List<ReportImpl> reportList = TestUtil.makeReportList();
-    StringFormater formater = new StringFormater();
+    TeamContextualStringFormater formater = new TeamContextualStringFormater();
 
 
     @Test

@@ -14,11 +14,8 @@ TODO: consider if we want comments at this level.
 @Data
 public abstract class AbstractIdedMap<T,U,V> extends HashMap<T, V> implements IdedMap<T,U,V>, Timed<Date>, Linked
 {
-    private T elementId;
-    private U userId;
-
+    private U elementId;
     private URI link;
-
     private String teamName;
     private String teamSummary;
     private Date time;
@@ -36,15 +33,9 @@ public abstract class AbstractIdedMap<T,U,V> extends HashMap<T, V> implements Id
     }
 
     @Override
-    public T getElementId()
+    public U getElementId()
     {
         return elementId;
-    }
-
-    @Override
-    public U getUserId()
-    {
-        return userId;
     }
 
     @Override

@@ -8,11 +8,10 @@ import java.net.URI;
 import java.util.Date;
 
 @Data
-public class ReportImpl implements Report<HierarchicalId,String, String, Date>
+public class ReportImpl implements Report<HierarchicalId, String, Date>
 {
     private String report;
     private HierarchicalId elementId;
-    private String userId;
     private Date date;
     private URI link;
 
@@ -26,12 +25,6 @@ public class ReportImpl implements Report<HierarchicalId,String, String, Date>
     public HierarchicalId getElementId()
     {
         return elementId;
-    }
-
-    @Override
-    public String getUserId()
-    {
-        return userId;
     }
 
     @Override

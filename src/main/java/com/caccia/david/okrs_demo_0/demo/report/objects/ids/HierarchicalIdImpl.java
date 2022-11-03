@@ -1,9 +1,12 @@
-package com.caccia.david.okrs_demo_0.demo.report.objects;
+package com.caccia.david.okrs_demo_0.demo.report.objects.ids;
 
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
+import com.caccia.david.okrs_demo_0.demo.report.interfaces.ObjectiveId;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /*
@@ -14,6 +17,7 @@ import java.util.stream.Collectors;
 public class HierarchicalIdImpl implements HierarchicalId
 {
     List<String> idList;
+    private Set<ObjectiveId> objectiveIds = new HashSet<>();
 
     public HierarchicalIdImpl(List<String> path)
     {
@@ -87,6 +91,12 @@ public class HierarchicalIdImpl implements HierarchicalId
     public String getLeaf()
     {
         return idList.get(idList.size() - 1);
+    }
+
+    @Override
+    public Set<ObjectiveId> getObjectiveIds()
+    {
+        return objectiveIds;
     }
 
     @Override

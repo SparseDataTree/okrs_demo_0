@@ -9,10 +9,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Data
-public class ThreadImpl extends IdedElement implements Thread<String, Date, String>
+public class ThreadImpl implements Thread<String, Date, String>
 {
     private Date time;
     private List<Comment<String, Date, String>> thread =  new LinkedList<>();
+    private String elementId;
 
     @Override
     public List<Comment<String, Date, String>> getThread()
@@ -24,5 +25,11 @@ public class ThreadImpl extends IdedElement implements Thread<String, Date, Stri
     public Date getTime()
     {
         return time;
+    }
+
+    @Override
+    public String getElementId()
+    {
+        return elementId;
     }
 }

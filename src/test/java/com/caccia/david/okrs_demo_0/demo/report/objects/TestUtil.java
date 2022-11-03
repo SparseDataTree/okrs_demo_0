@@ -3,6 +3,7 @@ package com.caccia.david.okrs_demo_0.demo.report.objects;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Comment;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Thread;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
+import com.caccia.david.okrs_demo_0.demo.report.objects.ids.HierarchicalIdImpl;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -81,7 +82,15 @@ public class TestUtil
 
     public static OkrMapImpl makeTestOkrMap()
     {
-        return null; // todo
+        OkrMapImpl okrs = new OkrMapImpl();
+        okrs.setTeamName("Test team name");
+        okrs.setTime(new Date(System.currentTimeMillis()));
+        okrs.setLink(URI.create("https://dummylink.com/home"));
+        okrs.setElementId(new HierarchicalIdImpl(Arrays.asList("abc","def")));
+
+//        okrs.put()
+
+        return okrs;
     }
 
     public static KeyResult makeTestKeyResult()
@@ -89,7 +98,6 @@ public class TestUtil
         KeyResult testKeyResult = new KeyResult();
         testKeyResult.setTime(new Date(System.currentTimeMillis()));
         testKeyResult.setElementId("testKeyResultId");
-        testKeyResult.setUserId("testUserId");
         testKeyResult.setThreads(makeTestThreads());
         testKeyResult.setElement("test key result");
         return testKeyResult;
@@ -109,8 +117,6 @@ public class TestUtil
         CommentImpl comment = new CommentImpl();
         comment.setTime(new Date(System.currentTimeMillis()));
         comment.setComment("test comment");
-        comment.setUserId("testUserId");
-        comment.setElementId("testCommentElementId");
         return comment;
     }
 }

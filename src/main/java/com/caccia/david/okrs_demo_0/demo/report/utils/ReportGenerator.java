@@ -68,7 +68,7 @@ public class ReportGenerator implements ReportGeneration<ReportImpl, String>
     @Override
     public  String makeTeamContextReport(String teamId, List<ReportImpl> reports)
     {
-        return new StringFormater().format(teamId, reports);
+        return new TeamContextualStringFormater().format(teamId, reports);
     }
 
 }

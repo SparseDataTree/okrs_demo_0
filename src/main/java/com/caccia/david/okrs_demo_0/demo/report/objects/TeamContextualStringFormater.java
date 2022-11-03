@@ -12,8 +12,11 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/*
+Formater class to produce String formated team-contextual reports.
+ */
 @Component
-public class StringFormater implements Formater<String, String, List<ReportImpl>>
+public class TeamContextualStringFormater implements Formater<String, String, List<ReportImpl>>
 {
     private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String ID = "Report ID: ";

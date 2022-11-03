@@ -1,6 +1,7 @@
 package com.caccia.david.okrs_demo_0.demo.report.interfaces;
 
 import java.util.List;
+import java.util.Set;
 
 public interface HierarchicalId
 {
@@ -26,4 +27,6 @@ public interface HierarchicalId
     ;
 
     String getLeaf();
+
+    Set<ObjectiveId> getObjectiveIds();
 }

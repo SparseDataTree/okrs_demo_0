@@ -5,9 +5,10 @@ import lombok.Data;
 
 
 @Data
-public class KeyResult extends AbstractCommented<String> implements ReportComponentType<ReportComponentTypes>
+public class KeyResult extends AbstractCommented<String, String> implements ReportComponentType<ReportComponentTypes>
 {
     String element;
+    private String elementId;
 
     @Override
     public ReportComponentTypes getType()
@@ -19,5 +20,11 @@ public class KeyResult extends AbstractCommented<String> implements ReportCompon
     public String getElement()
     {
         return element;
+    }
+
+    @Override
+    public String getElementId()
+    {
+        return elementId;
     }
 }

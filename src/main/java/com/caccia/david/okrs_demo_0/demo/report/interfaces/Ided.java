@@ -1,8 +1,6 @@
 package com.caccia.david.okrs_demo_0.demo.report.interfaces;
 
-public interface Ided<T,U>
+public interface Ided<E>
 {
-    T getElementId();
-
-    U getUserId();
+    E getElementId();
 }

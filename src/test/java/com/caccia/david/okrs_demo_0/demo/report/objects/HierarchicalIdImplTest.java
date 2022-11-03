@@ -1,6 +1,7 @@
 package com.caccia.david.okrs_demo_0.demo.report.objects;
 
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
+import com.caccia.david.okrs_demo_0.demo.report.objects.ids.HierarchicalIdImpl;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

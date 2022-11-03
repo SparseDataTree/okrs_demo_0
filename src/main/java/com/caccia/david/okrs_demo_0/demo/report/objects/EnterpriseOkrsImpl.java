@@ -1,13 +1,12 @@
 package com.caccia.david.okrs_demo_0.demo.report.objects;
 
 
+import com.caccia.david.okrs_demo_0.demo.report.objects.ids.HierarchicalIdImpl;
+
 import java.util.List;
 
 public class EnterpriseOkrsImpl extends AbstractIdedMap<HierarchicalIdImpl,String,OkrMapImpl>
 {
-    String oKRsID;
-
-    List<String> verticalOkrsIds;
 
     // TODO create a utility class to generate user-consumable reports from this.
     // See notes in the Report interface.

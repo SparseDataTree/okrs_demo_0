@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class CommentImpl extends IdedElement implements Comment<String, Date, String>
+public class CommentImpl implements Comment<String, Date, String>
 {
     private String comment;
     private Date time;
