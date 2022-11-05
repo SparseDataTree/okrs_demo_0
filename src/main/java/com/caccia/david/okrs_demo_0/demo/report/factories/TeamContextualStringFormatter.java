@@ -1,7 +1,8 @@
-package com.caccia.david.okrs_demo_0.demo.report.objects;
+package com.caccia.david.okrs_demo_0.demo.report.factories;
 
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Formater;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
+import com.caccia.david.okrs_demo_0.demo.report.objects.ReportImpl;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
@@ -12,22 +13,13 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static com.caccia.david.okrs_demo_0.demo.report.factories.StringFormatConstants.*;
 /*
 Formater class to produce String formated team-contextual reports.
  */
 @Component
-public class TeamContextualStringFormater implements Formater<String, String, List<ReportImpl>>
+public class TeamContextualStringFormatter implements Formater<String, String, List<ReportImpl>>
 {
-    private static final String LINE_SEPARATOR = System.lineSeparator();
-    private static final String ID = "Report ID: ";
-    private static final String NODE_SEPARATOR = "====================================================================" + LINE_SEPARATOR;
-    private static final String TEAM_REPORT = "Team Report: ";
-    private static final String CHAINED_REPORTS = "Chained Reports: ";
-    private static final String SUBSCRIBED_REPORTS = "Subscribed Reports: ";
-    private static final String SPACES = "     ";
-    private static final String DATE = "Last updated: ";
-    private static final String LINK = "Link: ";
-
 
     /*
         This will be a vertical list of reports, starting with the designated team, and working up the tree.  Once that has been done,
@@ -65,9 +57,9 @@ public class TeamContextualStringFormater implements Formater<String, String, Li
 
     private void makeNodeReport(ReportImpl report)
     {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd:hh-mm");
+        DateFormat df = new SimpleDateFormat(DATE_PATTERN);
         String time = df.format(report.getDate());
-        b.append(ID + report.getElementId() + SPACES + DATE + time);
+        b.append(String.format(ID_DATE_FORMAT, REPORT_ID_KEY, report.getElementId(), time));
         b.append(LINE_SEPARATOR);
         b.append(LINE_SEPARATOR);
         b.append(report.getReport());

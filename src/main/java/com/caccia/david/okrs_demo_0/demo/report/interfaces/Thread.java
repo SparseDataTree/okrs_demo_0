@@ -1,6 +1,6 @@
 package com.caccia.david.okrs_demo_0.demo.report.interfaces;
 
-import com.caccia.david.okrs_demo_0.demo.report.objects.ReportComponentTypes;
+import com.caccia.david.okrs_demo_0.demo.report.factories.ReportComponentTypes;
 
 import java.util.List;
 

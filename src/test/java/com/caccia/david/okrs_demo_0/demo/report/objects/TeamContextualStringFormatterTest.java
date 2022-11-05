@@ -1,14 +1,15 @@
 package com.caccia.david.okrs_demo_0.demo.report.objects;
 
+import com.caccia.david.okrs_demo_0.demo.report.factories.TeamContextualStringFormatter;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class TeamContextualStringFormaterTest
+class TeamContextualStringFormatterTest
 {
 
     List<ReportImpl> reportList = TestUtil.makeReportList();
-    TeamContextualStringFormater formater = new TeamContextualStringFormater();
+    TeamContextualStringFormatter formater = new TeamContextualStringFormatter();
 
 
     @Test

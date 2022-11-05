@@ -1,5 +1,6 @@
 package com.caccia.david.okrs_demo_0.demo.report.objects;
 
+import com.caccia.david.okrs_demo_0.demo.report.factories.ReportComponentTypes;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.ObjectiveId;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.ReportComponentType;
 import lombok.Data;

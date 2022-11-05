@@ -54,7 +54,7 @@ public class TestUtil
         report.setDate(new Date(1700000000000L + random.nextInt(50000000)));
         try
         {
-            report.setLink(new URI("https://mockedlinkfortesting.com/home/enterprise/team"));
+            report.setLink(new URI("https://mockedlinkfortesting.com/home/enterprise/team/"+ UUID.randomUUID()));
         } catch (URISyntaxException e)
         {
             throw new RuntimeException(e);

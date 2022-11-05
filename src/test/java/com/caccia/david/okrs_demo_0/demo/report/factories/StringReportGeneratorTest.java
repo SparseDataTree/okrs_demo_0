@@ -1,4 +1,4 @@
-package com.caccia.david.okrs_demo_0.demo.report.utils;
+package com.caccia.david.okrs_demo_0.demo.report.factories;
 
 import com.caccia.david.okrs_demo_0.demo.report.objects.KeyResult;
 import com.caccia.david.okrs_demo_0.demo.report.objects.OkrMapImpl;
@@ -7,11 +7,10 @@ import com.caccia.david.okrs_demo_0.demo.report.objects.TestUtil;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-class ReportGeneratorTest
+class StringReportGeneratorTest
 {
-    ReportGenerator reportGenerator = new ReportGenerator();
+    StringReportGenerator reportGenerator = new StringReportGenerator();
 
     @Test
     void makeTeamReport()

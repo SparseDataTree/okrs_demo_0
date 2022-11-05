@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+To be clear, this refers to conversation threads.
+ */
 @Data
 public class ThreadImpl implements Thread<String, Date, String>
 {
