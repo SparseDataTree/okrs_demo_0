@@ -5,8 +5,6 @@ import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
 import com.caccia.david.okrs_demo_0.demo.report.objects.ReportImpl;
 import org.springframework.stereotype.Component;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -57,9 +55,7 @@ public class TeamContextualStringFormatter implements Formater<String, String, L
 
     private void makeNodeReport(ReportImpl report)
     {
-        DateFormat df = new SimpleDateFormat(DATE_PATTERN);
-        String time = df.format(report.getDate());
-        b.append(String.format(ID_DATE_FORMAT, REPORT_ID_KEY, report.getElementId(), time));
+        b.append(String.format(ID_DATE_FORMAT, REPORT_ID_KEY, report.getElementId(), getTime(report.getDate())));
         b.append(LINE_SEPARATOR);
         b.append(LINE_SEPARATOR);
         b.append(report.getReport());

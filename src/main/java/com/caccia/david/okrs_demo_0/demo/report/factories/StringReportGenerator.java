@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.caccia.david.okrs_demo_0.demo.report.factories.ReportHeaders.*;
+import static com.caccia.david.okrs_demo_0.demo.report.factories.StringFormatConstants.*;
 
 /*
 Compare the purpose of this class to that of the TeamContextualStringFormatter.
@@ -28,7 +29,6 @@ public class StringReportGenerator implements ReportGeneration<ReportImpl, Strin
 
      */
 
-    // todo consider making a data class to provide line format templates and such.
 
     @Override
     public  ReportImpl makeTeamReport(OkrMapImpl teamOKRs)
@@ -44,10 +44,9 @@ public class StringReportGenerator implements ReportGeneration<ReportImpl, Strin
       String makeReportText(OkrMapImpl teamOKRs)
     {
         StringBuffer b = new StringBuffer();
-        b.append(Objectives);
+        b.append(ObjectivesHeader);
         for(List<ObjectiveAndKeyResults> okrVersions: teamOKRs.values())
         {
-            b.append(Objective);
             ObjectiveAndKeyResults okr = okrVersions.get(okrVersions.size() - 1);
             b.append(makeOkrText(okr));
         }
@@ -57,23 +56,33 @@ public class StringReportGenerator implements ReportGeneration<ReportImpl, Strin
       String makeOkrText(ObjectiveAndKeyResults okr)
     {
         StringBuffer b = new StringBuffer();
-        b.append(okr.getObjective().getElement());
-        b.append(KeyResults);
+        b.append(makeObjectiveText(okr.getObjective()));
+        b.append(KeyResultsHeader);
         for(KeyResult keyResult: okr.getKeyResults().values())
         {
-            b.append(KeyResult);
+            b.append(KeyResultHeader);
             b.append(makeKeyResultText(keyResult));
 
         }
         return b.toString();
     }
 
-      String makeKeyResultText(KeyResult keyResult)
+    private String makeObjectiveText(Objective objective)
     {
         StringBuffer b = new StringBuffer();
-        // todo connect in the formater?
-        b.append(keyResult.getElement());
+        b.append(ObjectivesHeader);
+        // todo look at the objective id; seems like our elmentid should already be of type string.
+        b.append(String.format(ID_DATE_FORMAT,OBJECTIVE_ID_KEY, objective.getElementId().getObjectiveId(),getTime(objective.getTime())));
+        b.append(objective.getElement());
+        return b.toString();
+    }
 
+    String makeKeyResultText(KeyResult keyResult)
+    {
+        StringBuffer b = new StringBuffer();
+        b.append(KeyResultHeader);
+        b.append(String.format(ID_DATE_FORMAT,OBJECTIVE_ID_KEY, keyResult.getElementId(),getTime(keyResult.getTime())));
+        b.append(keyResult.getElement());
         return b.toString();
     }
 

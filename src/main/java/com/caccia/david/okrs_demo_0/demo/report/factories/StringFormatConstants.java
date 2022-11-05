@@ -1,5 +1,9 @@
 package com.caccia.david.okrs_demo_0.demo.report.factories;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class StringFormatConstants
 {
     public static final String LINE_SEPARATOR = System.lineSeparator();
@@ -18,5 +22,11 @@ public class StringFormatConstants
 
     public static final String ID_DATE_FORMAT = "%s%s" + SPACES + DATE + "%s"; // id key, id value, spaces, date key, date value
 
+
+    public static String getTime(Date date)
+    {
+        DateFormat df = new SimpleDateFormat(DATE_PATTERN);
+        return df.format(date);
+    }
 
 }
