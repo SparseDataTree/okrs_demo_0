@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 import static com.caccia.david.okrs_demo_0.demo.report.factories.StringFormatConstants.*;
 /*
-Formater class to produce String formated team-contextual reports.
+Formater class to produce String formatted team-contextual reports.
  */
 @Component
 public class TeamContextualStringFormatter implements Formater<String, String, List<ReportImpl>>
@@ -22,6 +22,8 @@ public class TeamContextualStringFormatter implements Formater<String, String, L
     /*
         This will be a vertical list of reports, starting with the designated team, and working up the tree.  Once that has been done,
         reports from subscribed teams follow.
+
+        I would like this class to label any team reports with new changes as updated.  This should be external to the report itself.
          */
     StringBuffer b = new StringBuffer();
     private int coreReportCount = 0;

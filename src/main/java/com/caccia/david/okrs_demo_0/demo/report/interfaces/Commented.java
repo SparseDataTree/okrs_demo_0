@@ -6,4 +6,6 @@ public interface Commented<I, E,T,C> extends  Timed<T>
 {
     E getElement();
     Set<Thread<I,T,C>> getThreads();
+
+    T getTimeOfMostRecentComment();
 }
