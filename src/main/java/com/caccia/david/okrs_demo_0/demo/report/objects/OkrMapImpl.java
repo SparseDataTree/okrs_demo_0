@@ -1,11 +1,11 @@
 package com.caccia.david.okrs_demo_0.demo.report.objects;
 
-import com.caccia.david.okrs_demo_0.demo.report.interfaces.ObjectiveId;
+import com.caccia.david.okrs_demo_0.demo.report.interfaces.ObjectiveKRsId;
 import com.caccia.david.okrs_demo_0.demo.report.objects.ids.HierarchicalIdImpl;
 
 import java.util.List;
 
-public class OkrMapImpl extends AbstractIdedMap<ObjectiveId, HierarchicalIdImpl, List<ObjectiveAndKeyResults>>
+public class OkrMapImpl extends AbstractIdedMap<ObjectiveKRsId, HierarchicalIdImpl, List<ObjectiveAndKeyResults>>
 {
     // This is at the level of a team set of OKRs.  Note that versioning is done at the level of one objective and its
     // associated key results.  These components can be commented.

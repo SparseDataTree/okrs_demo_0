@@ -9,7 +9,7 @@ import lombok.Data;
 public class KeyResult extends AbstractCommented<String, String> implements ReportComponentType<ReportComponentTypes>
 {
     String element;
-    private String elementId;
+    String elementId;
 
     @Override
     public ReportComponentTypes getType()

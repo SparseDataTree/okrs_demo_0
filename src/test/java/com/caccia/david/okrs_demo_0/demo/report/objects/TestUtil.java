@@ -1,9 +1,11 @@
 package com.caccia.david.okrs_demo_0.demo.report.objects;
 
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Comment;
+import com.caccia.david.okrs_demo_0.demo.report.interfaces.ObjectiveKRsId;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.Thread;
 import com.caccia.david.okrs_demo_0.demo.report.interfaces.HierarchicalId;
 import com.caccia.david.okrs_demo_0.demo.report.objects.ids.HierarchicalIdImpl;
+import com.caccia.david.okrs_demo_0.demo.report.objects.ids.ObjectiveKRsIdsImpl;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -19,6 +21,8 @@ public class TestUtil
 
     public static String[] testPaths = new String[]{"root", "dir", "manager", "team", "developer"};
     public static String[] reportPaths = new String[]{"alpha", "beta", "gamma", "delta", "epsilon"};
+    public static String[] okrKeys = new String[]{"Stronger", "Faster", "Smarter"};
+
     public static HierarchicalIdImpl makeTestList()
     {
         List<String> paths = makeTestPaths(testPaths);
@@ -29,7 +33,6 @@ public class TestUtil
     private static List<String> makeTestPaths(String... pathsIn)
     {
         List<String> testPaths = Arrays.asList(pathsIn);
-
         return testPaths;
     }
 
@@ -67,6 +70,13 @@ public class TestUtil
         int wordsPerLine = 12;
         StringBuffer b = new StringBuffer();
         int lineCount = 5 + random.nextInt(10);
+        makeLinesOfText(wordsPerLine, b, lineCount);
+
+        return b.toString();
+    }
+
+    private static void makeLinesOfText(int wordsPerLine, StringBuffer b, int lineCount)
+    {
         for(int i = 0; i < lineCount; i++)
         {
             for(int j = 0; j < wordsPerLine; j++)
@@ -76,7 +86,12 @@ public class TestUtil
                 b.append(System.lineSeparator());
 
         }
+    }
 
+    private static String makeLinesOfText(int wordsPerLine, int lineCount)
+    {
+        StringBuffer b = new StringBuffer();
+        makeLinesOfText( wordsPerLine, b,  lineCount);
         return b.toString();
     }
 
@@ -88,9 +103,71 @@ public class TestUtil
         okrs.setLink(URI.create("https://dummylink.com/home"));
         okrs.setElementId(new HierarchicalIdImpl(Arrays.asList("abc","def")));
 
-//        okrs.put()
+        for(String key: okrKeys)
+        {
+
+            ObjectiveKRsId objectiveKRsId = makeObjectiveIdThree(key);
+            okrs.put(objectiveKRsId, makeTestOkr(objectiveKRsId));
+        }
 
         return okrs;
+    }
+
+    public static ObjectiveKRsId makeObjectiveIdThree(String key)
+    {
+        int keyResultCount = 3;
+        ObjectiveKRsIdsImpl objectiveId = new ObjectiveKRsIdsImpl();
+        objectiveId.setObjectiveId(key);
+        Set<String> keyResultIds = new HashSet<>();
+        for(int i = 0; i < keyResultCount; i++)
+        {
+            keyResultIds.add("testKeyResult-" + i);
+        }
+        objectiveId.setKeyResultIds(keyResultIds);
+        return objectiveId;
+    }
+
+    private static List<ObjectiveAndKeyResults> makeTestOkr(ObjectiveKRsId objectiveKRsId)
+    {
+
+        List<ObjectiveAndKeyResults> objectiveAndKeyResultList = new LinkedList<>();
+        Set<String> krIds = objectiveKRsId.getKeyResultIds();
+        ObjectiveAndKeyResults okr = new ObjectiveAndKeyResults();
+        Objective objective = makeObjective(objectiveKRsId);
+        // todo maybe generate comments
+        okr.setObjective(objective);
+        okr.setKeyResults(makeKeyResults(krIds));
+        objectiveAndKeyResultList.add(okr);
+        return objectiveAndKeyResultList;
+    }
+
+    private static Objective makeObjective(ObjectiveKRsId objectiveKRsId)
+    {
+        Objective objective = new Objective();
+        objective.setTime(new Date(System.currentTimeMillis()));
+        objective.setElementId(objectiveKRsId);
+        objective.setObjective(makeLinesOfText(8,3));
+        return objective;
+    }
+
+    private static Map<String, KeyResult> makeKeyResults(Set<String> krIds)
+    {
+        Map<String, KeyResult> krs = new HashMap<>();
+        for(String key: krIds)
+        {
+            krs.put(key, makeKeyResult(key));
+        }
+        return krs;
+    }
+
+    private static KeyResult makeKeyResult(String key)
+    {
+        KeyResult kr = new KeyResult();
+        kr.setTime(new Date(System.currentTimeMillis()));
+        kr.setElementId(key);
+        kr.setElement(makeLinesOfText(7,4));
+        // todo maybe generate comments
+        return kr;
     }
 
     public static KeyResult makeTestKeyResult()

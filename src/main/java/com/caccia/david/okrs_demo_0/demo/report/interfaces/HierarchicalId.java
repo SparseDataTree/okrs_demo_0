@@ -28,5 +28,5 @@ public interface HierarchicalId
 
     String getLeaf();
 
-    Set<ObjectiveId> getObjectiveIds();
+    Set<ObjectiveKRsId> getObjectiveIds();
 }

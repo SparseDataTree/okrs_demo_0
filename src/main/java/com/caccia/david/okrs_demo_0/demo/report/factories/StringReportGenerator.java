@@ -26,9 +26,7 @@ public class StringReportGenerator implements ReportGeneration<ReportImpl, Strin
 
         What if ids were not text.  What if they were a list of ids, in order of hierarchy?
         That would make some aspect of report creation easier.  It might also make team navigation easier too.
-
      */
-
 
     @Override
     public  ReportImpl makeTeamReport(OkrMapImpl teamOKRs)
@@ -67,12 +65,12 @@ public class StringReportGenerator implements ReportGeneration<ReportImpl, Strin
         return b.toString();
     }
 
-    private String makeObjectiveText(Objective objective)
+     String makeObjectiveText(Objective objective)
     {
         StringBuffer b = new StringBuffer();
         b.append(ObjectivesHeader);
-        // todo look at the objective id; seems like our elmentid should already be of type string.
         b.append(String.format(ID_DATE_FORMAT,OBJECTIVE_ID_KEY, objective.getElementId().getObjectiveId(),getTime(objective.getTime())));
+        b.append(LINE_SEPARATOR);
         b.append(objective.getElement());
         return b.toString();
     }
@@ -82,15 +80,14 @@ public class StringReportGenerator implements ReportGeneration<ReportImpl, Strin
         StringBuffer b = new StringBuffer();
         b.append(KeyResultHeader);
         b.append(String.format(ID_DATE_FORMAT,OBJECTIVE_ID_KEY, keyResult.getElementId(),getTime(keyResult.getTime())));
+        b.append(LINE_SEPARATOR);
         b.append(keyResult.getElement());
         return b.toString();
     }
-
 
     @Override
     public  String makeTeamContextReport(String teamId, List<ReportImpl> reports)
     {
         return new TeamContextualStringFormatter().format(teamId, reports);
     }
-
 }

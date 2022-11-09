@@ -5,7 +5,7 @@ import java.util.Set;
 /*
 An objective and its associated key results makes a logical unit.  We are intentionally binding their ids into one class.
  */
-public interface ObjectiveId
+public interface ObjectiveKRsId
 {
     String getObjectiveId();
     Set<String> getKeyResultIds();
