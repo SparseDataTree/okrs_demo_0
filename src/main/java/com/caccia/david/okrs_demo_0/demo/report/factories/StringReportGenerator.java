@@ -58,9 +58,7 @@ public class StringReportGenerator implements ReportGeneration<ReportImpl, Strin
         b.append(KeyResultsHeader);
         for(KeyResult keyResult: okr.getKeyResults().values())
         {
-            b.append(KeyResultHeader);
             b.append(makeKeyResultText(keyResult));
-
         }
         return b.toString();
     }
@@ -68,20 +66,26 @@ public class StringReportGenerator implements ReportGeneration<ReportImpl, Strin
      String makeObjectiveText(Objective objective)
     {
         StringBuffer b = new StringBuffer();
-        b.append(ObjectivesHeader);
+//        b.append(ObjectivesHeader);
         b.append(String.format(ID_DATE_FORMAT,OBJECTIVE_ID_KEY, objective.getElementId().getObjectiveId(),getTime(objective.getTime())));
         b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
         b.append(objective.getElement());
+        b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
         return b.toString();
     }
 
     String makeKeyResultText(KeyResult keyResult)
     {
         StringBuffer b = new StringBuffer();
-        b.append(KeyResultHeader);
-        b.append(String.format(ID_DATE_FORMAT,OBJECTIVE_ID_KEY, keyResult.getElementId(),getTime(keyResult.getTime())));
+//        b.append(KeyResultHeader);
+        b.append(String.format(ID_DATE_FORMAT,KEY_RESULT_ID_KEY, keyResult.getElementId(),getTime(keyResult.getTime())));
+        b.append(LINE_SEPARATOR);
         b.append(LINE_SEPARATOR);
         b.append(keyResult.getElement());
+        b.append(LINE_SEPARATOR);
+        b.append(LINE_SEPARATOR);
         return b.toString();
     }
 

@@ -16,13 +16,12 @@ class StringReportGeneratorTest
     @Test
     void makeTeamReport()
     {
-
         OkrMapImpl okrMap = TestUtil.makeTestOkrMap();
         ReportImpl report = reportGenerator.makeTeamReport(okrMap);
         assertThat(report).isNotNull(); // todo more validation
     }
 
-    // This is the text of a team report, laying out the objectives and key results
+    // This is the text of a team report, laying out the objectives and key results, but without team-level metadata
     @Test
     void makeReportText()
     {
@@ -35,7 +34,6 @@ class StringReportGeneratorTest
     @Test
     void makeOkrText()
     {
-        // todo let's clean up the output for this.
         OkrMapImpl okrMap = TestUtil.makeTestOkrMap();
         String objectiveId = TestUtil.okrKeys[0];
         ObjectiveKRsId okrKey = TestUtil.makeObjectiveIdThree(objectiveId);
