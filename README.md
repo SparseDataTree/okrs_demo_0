@@ -3,7 +3,16 @@
 ## OKRs demo 0
 
 ### Introduction
-Our goal is to demonstrate a system for sharing OKRs across an enterprise.
+As leaders of enterprises have considered how to effectively coordinate efforts across enterprises, one of the more promising
+approaches developed has been that of the OKR framework. OKR (Objectives and Key Results), can be developed 
+at an enterprise level; and then can be refined down the hierarchy to be supportive and consistent.
+They can be used to create a sense of ownership and accountability, especially if they are open to feedback up and down
+an enterprise hierarchy.  (This would not be true if ownership and accountablity was just top-down).
+
+Our goal is to demonstrate a system for sharing OKRs across an enterprise that supports this approach.
+
+Note that there are commercially available OKR frameworks, whith nice UIs and integration with analytics and such.  
+This project is developed with the belief that there is room and value for an open-source solution.  
 
 
 
@@ -77,9 +86,12 @@ But let's call out some of the functionality we want eventually:
 Just the rest endpoint for now, but perhaps eventually a UI for endpoints; and to navigate the topic tree; and to see reports
 
 
-### Reference Documentation
+## Analytics and AI
+Integration with analytics or AI frameworks would be a follow-on activity.
 
-For further reference, please consider the following sections:
+## Reference Documentation
+
+For developer reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.6.6/maven-plugin/reference/html/)
@@ -89,9 +101,13 @@ For further reference, please consider the following sections:
 
 ### Guides
 
-The following guides illustrate how to use some features concretely:
+The following developer guides illustrate how to use some features concretely:
 
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+
+### Commercial OKR frameworks
+
+* [Top 10 of 2023](https://www.capterra.com/sem-compare/okr-software/?utm_source=ps-google&utm_medium=ppc&utm_campaign=:1:CAP:2:COM:3:All:4:US:5:BAU:6:SOF:7:Desktop:8:BR:9:OKR&network=g&gclid=CjwKCAiA8sauBhB3EiwAruTRJiepKlBUfej3B-opsl-WR2leQnTyGLnUDhsMnLYV2JbwCKV0PGSa-xoCFwUQAvD_BwE)
 
